@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sync_bridge/features/tasks/domain/entities/task_entity.dart';
 import 'package:sync_bridge/shared/theme/app_color_scheme.dart';
+import 'package:sync_bridge/shared/theme/app_dimensions.dart';
 
 class TaskTile extends StatelessWidget {
   const TaskTile({
@@ -29,7 +31,7 @@ class TaskTile extends StatelessWidget {
       decoration: BoxDecoration(
         color:
             _isConflict ? colors.error.withValues(alpha: 0.06) : colors.surface,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(12.r),
         border: Border.all(
           color:
               _isConflict
@@ -40,12 +42,12 @@ class TaskTile extends StatelessWidget {
       ),
       child: Material(
         color: Colors.transparent,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(12.r),
         child: InkWell(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(12.r),
           onTap: () => onToggle(!_isCompleted),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+            padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 12.h),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -53,8 +55,8 @@ class TaskTile extends StatelessWidget {
                   onTap: () => onToggle(!_isCompleted),
                   child: AnimatedContainer(
                     duration: const Duration(milliseconds: 180),
-                    width: 22,
-                    height: 22,
+                    width: 22.w,
+                    height: 22.w,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       color: _isCompleted ? colors.primary : Colors.transparent,
@@ -70,20 +72,20 @@ class TaskTile extends StatelessWidget {
                         _isCompleted
                             ? Icon(
                               Icons.check_rounded,
-                              size: 13,
+                              size: 13.sp,
                               color: colors.onPrimary,
                             )
                             : null,
                   ),
                 ),
 
-                const SizedBox(width: 12),
+                SizedBox(width: 12.w),
 
                 Expanded(
                   child: AnimatedDefaultTextStyle(
                     duration: const Duration(milliseconds: 200),
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: AppDimensions.kFontSize14,
                       fontWeight: FontWeight.w500,
                       color:
                           _isCompleted
@@ -105,38 +107,38 @@ class TaskTile extends StatelessWidget {
                 ),
 
                 if (_isDirty) ...[
-                  const SizedBox(width: 8),
+                  SizedBox(width: 8.w),
                   Tooltip(
                     message: 'Pending sync',
                     child: Container(
-                      padding: const EdgeInsets.all(5),
+                      padding: EdgeInsets.all(5.r),
                       decoration: BoxDecoration(
-                        color: const Color(0xFFFFF3E0),
-                        borderRadius: BorderRadius.circular(6),
+                        color: colors.primary.withValues(alpha: 0.1),
+                        borderRadius: BorderRadius.circular(6.r),
                       ),
-                      child: const Icon(
+                      child: Icon(
                         Icons.cloud_upload_outlined,
-                        size: 14,
-                        color: Color(0xFFF57C00),
+                        size: 14.sp,
+                        color: colors.primary,
                       ),
                     ),
                   ),
                 ],
                 if (_isConflict) ...[
-                  const SizedBox(width: 4),
+                  SizedBox(width: 4.w),
                   Tooltip(
                     message: 'Resolve conflict',
                     child: GestureDetector(
                       onTap: onConflictTap,
                       child: Container(
-                        padding: const EdgeInsets.all(5),
+                        padding: EdgeInsets.all(5.r),
                         decoration: BoxDecoration(
                           color: colors.error.withValues(alpha: 0.1),
-                          borderRadius: BorderRadius.circular(6),
+                          borderRadius: BorderRadius.circular(6.r),
                         ),
                         child: Icon(
                           Icons.warning_amber_rounded,
-                          size: 14,
+                          size: 14.sp,
                           color: colors.error,
                         ),
                       ),

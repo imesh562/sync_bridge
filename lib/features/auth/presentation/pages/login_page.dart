@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sync_bridge/features/auth/presentation/blocs/auth/auth_bloc.dart';
 import 'package:sync_bridge/navigation/app_router.dart';
+import 'package:sync_bridge/shared/theme/app_dimensions.dart';
 import 'package:sync_bridge/shared/widgets/base_view.dart';
+import 'package:sync_bridge/utils/extensions.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -22,46 +25,55 @@ class _LoginPageState extends State<LoginPage>
 
   @override
   Widget build(BuildContext context) {
+    final colors = context.appColors;
     final isLoading = bloc.state is AuthLoading;
 
     return Scaffold(
+      backgroundColor: colors.background,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
+          padding: EdgeInsets.symmetric(horizontal: 24.w),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const Text(
+              Text(
                 'Welcome to\nSyncBridge',
-                style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontSize: AppDimensions.kFontSize32,
+                  fontWeight: FontWeight.bold,
+                  color: colors.onBackground,
+                ),
               ),
-              const SizedBox(height: 12),
-              const Text(
+              SizedBox(height: 12.h),
+              Text(
                 'Sign in to continue',
-                style: TextStyle(fontSize: 16, color: Colors.grey),
+                style: TextStyle(
+                  fontSize: AppDimensions.kFontSize16,
+                  color: colors.textSecondary,
+                ),
               ),
-              const SizedBox(height: 64),
+              SizedBox(height: 64.h),
 
               OutlinedButton.icon(
-                icon: const Icon(Icons.g_mobiledata, size: 28),
-                label: const Text(
+                icon: Icon(Icons.g_mobiledata, size: 28.sp),
+                label: Text(
                   'Continue with Google',
-                  style: TextStyle(fontSize: 16),
+                  style: TextStyle(fontSize: AppDimensions.kFontSize16),
                 ),
                 onPressed:
                     isLoading
                         ? null
                         : () => bloc.add(const GoogleSignInStarted()),
                 style: OutlinedButton.styleFrom(
-                  minimumSize: const Size.fromHeight(52),
+                  minimumSize: Size.fromHeight(52.h),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(12.r),
                   ),
                 ),
               ),
 
-              const SizedBox(height: 32),
+              SizedBox(height: 32.h),
 
               if (isLoading) const Center(child: CircularProgressIndicator()),
             ],

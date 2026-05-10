@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sync_bridge/shared/theme/app_color_scheme.dart';
-import 'package:sync_bridge/utils/extensions.dart';
+import 'package:sync_bridge/shared/theme/app_dimensions.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({
@@ -25,7 +26,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       elevation: 0,
       title: Text(
         'Tasks',
-        style: context.textTheme.titleLarge?.copyWith(
+        style: TextStyle(
+          fontSize: AppDimensions.kFontSize22,
           fontWeight: FontWeight.w700,
           color: colors.onBackground,
           letterSpacing: -0.3,
@@ -34,19 +36,19 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: [
         if (hasPending) ...[
           InkWell(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(20.r),
             onTap: onSync,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+              padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
-                spacing: 4,
+                spacing: 4.w,
                 children: [
-                  Icon(Icons.sync_rounded, size: 18, color: colors.primary),
+                  Icon(Icons.sync_rounded, size: 18.sp, color: colors.primary),
                   Text(
                     'Sync',
                     style: TextStyle(
-                      fontSize: 13,
+                      fontSize: AppDimensions.kFontSize13,
                       fontWeight: FontWeight.w600,
                       color: colors.primary,
                     ),
@@ -55,7 +57,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               ),
             ),
           ),
-          const SizedBox(width: 8),
+          SizedBox(width: 8.w),
         ],
         IconButton(
           icon: Icon(Icons.logout_rounded, color: colors.onBackground),

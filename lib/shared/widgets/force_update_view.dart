@@ -1,31 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sync_bridge/shared/theme/app_dimensions.dart';
+import 'package:sync_bridge/utils/extensions.dart';
 
-/// Shown automatically by [BaseView] when a [ForceUpdateFailure] is received.
-///
-/// Replace the body with your app's real force-update UI (store deep-link,
-/// release notes, etc.). This screen is intentionally non-dismissible —
-/// [PopScope] blocks the back button and [BaseView] navigates here with
-/// [context.go] so there is no previous route to return to.
 class ForceUpdateView extends StatelessWidget {
   const ForceUpdateView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final colors = context.appColors;
     return PopScope(
       canPop: false,
-      child: const Scaffold(
+      child: Scaffold(
+        backgroundColor: colors.background,
         body: Center(
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(Icons.system_update_alt_rounded, size: 64),
-              SizedBox(height: 16),
+              Icon(
+                Icons.system_update_alt_rounded,
+                size: 64.sp,
+                color: colors.primary,
+              ),
+              SizedBox(height: 16.h),
               Text(
                 'Update Required',
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontSize: AppDimensions.kFontSize22,
+                  fontWeight: FontWeight.bold,
+                  color: colors.onBackground,
+                ),
               ),
-              SizedBox(height: 8),
-              Text('Please update the app to continue.'),
+              SizedBox(height: 8.h),
+              Text(
+                'Please update the app to continue.',
+                style: TextStyle(
+                  fontSize: AppDimensions.kFontSize14,
+                  color: colors.textSecondary,
+                ),
+              ),
             ],
           ),
         ),

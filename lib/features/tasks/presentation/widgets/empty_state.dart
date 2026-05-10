@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sync_bridge/shared/theme/app_color_scheme.dart';
-import 'package:sync_bridge/utils/extensions.dart';
+import 'package:sync_bridge/shared/theme/app_dimensions.dart';
 
 class EmptyState extends StatelessWidget {
   const EmptyState({required this.colors});
@@ -14,29 +15,31 @@ class EmptyState extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            padding: const EdgeInsets.all(24),
+            padding: EdgeInsets.all(24.r),
             decoration: BoxDecoration(
               color: colors.surface,
               shape: BoxShape.circle,
             ),
             child: Icon(
               Icons.checklist_rounded,
-              size: 48,
+              size: 48.sp,
               color: colors.textSecondary,
             ),
           ),
-          const SizedBox(height: 16),
+          SizedBox(height: 16.h),
           Text(
             'No tasks yet',
-            style: context.textTheme.titleMedium?.copyWith(
+            style: TextStyle(
+              fontSize: AppDimensions.kFontSize16,
               fontWeight: FontWeight.w600,
               color: colors.onBackground,
             ),
           ),
-          const SizedBox(height: 6),
+          SizedBox(height: 6.h),
           Text(
             'Your tasks will appear here once synced.',
-            style: context.textTheme.bodySmall?.copyWith(
+            style: TextStyle(
+              fontSize: AppDimensions.kFontSize12,
               color: colors.textSecondary,
             ),
           ),
