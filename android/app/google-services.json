@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "516794742200",
+    "project_id": "syncbridge-1101a",
+    "storage_bucket": "syncbridge-1101a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:516794742200:android:5d1ae5f47d534116f74b4d",
+        "android_client_info": {
+          "package_name": "com.syncbridge.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "516794742200-ghpmr5bmguh6073ish9tb407jk4c4irt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.syncbridge.app",
+            "certificate_hash": "035a2c3bf4209ca7ac688662b55934814a993e60"
+          }
+        },
+        {
+          "client_id": "516794742200-jg24qef27at3c7l0kd1vs69o3s8ebgp7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDe8dueXvUyOqgjw7sKScftG4XmkiDVvWw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "516794742200-jg24qef27at3c7l0kd1vs69o3s8ebgp7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "516794742200-9cqg4bsopmt0dmdnucar220hp7p6vuia.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.syncbridge.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

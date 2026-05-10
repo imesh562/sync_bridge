@@ -1,0 +1,35 @@
+{
+  "features": {
+    "auth": {
+      "primaryBloc": {
+        "name": "auth",
+        "type": "bloc"
+      },
+      "blocs": [
+        "auth"
+      ],
+      "cubits": [],
+      "endpoints": []
+    },
+    "tasks": {
+      "blocs": [
+        "tasks"
+      ],
+      "cubits": [],
+      "endpoints": [
+        {
+          "name": "getTasks",
+          "type": "rest",
+          "handledBy": "tasks",
+          "handlerType": "bloc"
+        },
+        {
+          "name": "updateTask",
+          "type": "rest",
+          "handledBy": "tasks",
+          "handlerType": "bloc"
+        }
+      ]
+    }
+  }
+}
