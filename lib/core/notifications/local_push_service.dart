@@ -37,7 +37,7 @@ final class LocalPushService {
         ?.createNotificationChannel(_androidChannel);
 
     const initSettings = InitializationSettings(
-      android: AndroidInitializationSettings('@mipmap/ic_launcher'),
+      android: AndroidInitializationSettings('@mipmap/launcher_icon'),
       iOS: DarwinInitializationSettings(),
     );
     await _localNotifications.initialize(initSettings);
