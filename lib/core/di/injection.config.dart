@@ -1,4 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// dart format width=80
 
 // **************************************************************************
 // InjectableConfigGenerator
@@ -45,64 +46,76 @@ import '../storage/secure_storage_service.dart' as _i666;
 import 'register_module.dart' as _i291;
 
 extension GetItInjectableX on _i174.GetIt {
-// initializes the registration of main-scope dependencies inside of GetIt
+  // initializes the registration of main-scope dependencies inside of GetIt
   Future<_i174.GetIt> init({
     String? environment,
     _i526.EnvironmentFilter? environmentFilter,
   }) async {
-    final gh = _i526.GetItHelper(
-      this,
-      environment,
-      environmentFilter,
-    );
+    final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final registerModule = _$RegisterModule();
     await gh.factoryAsync<_i460.SharedPreferences>(
       () => registerModule.sharedPreferences,
       preResolve: true,
     );
     gh.factory<_i558.FlutterSecureStorage>(
-        () => registerModule.flutterSecureStorage);
+      () => registerModule.flutterSecureStorage,
+    );
+    gh.lazySingleton<_i616.FirebaseAnalyticsService>(
+      () => _i616.FirebaseAnalyticsService(),
+    );
     gh.lazySingleton<_i895.Connectivity>(() => registerModule.connectivity);
     gh.lazySingleton<_i12.WebhookHelper>(() => _i12.WebhookHelper());
-    gh.lazySingleton<_i459.HiveService>(() => _i459.HiveService());
     gh.lazySingleton<_i745.AuthService>(() => _i745.AuthService());
-    gh.lazySingleton<_i616.FirebaseAnalyticsService>(
-        () => _i616.FirebaseAnalyticsService());
+    gh.lazySingleton<_i459.HiveService>(() => _i459.HiveService());
     gh.lazySingleton<_i141.SQLiteService>(() => _i141.SQLiteService());
     gh.lazySingleton<_i636.PreferencesService>(
-        () => _i636.PreferencesService(gh<_i460.SharedPreferences>()));
+      () => _i636.PreferencesService(gh<_i460.SharedPreferences>()),
+    );
     gh.lazySingleton<_i1032.LocalPushService>(
-        () => _i1032.LocalPushService(gh<_i636.PreferencesService>()));
-    gh.lazySingleton<_i726.AnalyticsService>(() =>
-        _i571.CompositeAnalyticsService(gh<_i616.FirebaseAnalyticsService>()));
+      () => _i1032.LocalPushService(gh<_i636.PreferencesService>()),
+    );
+    gh.lazySingleton<_i726.AnalyticsService>(
+      () =>
+          _i571.CompositeAnalyticsService(gh<_i616.FirebaseAnalyticsService>()),
+    );
     gh.lazySingleton<_i453.TasksLocalDatasource>(
-        () => _i453.TasksLocalDatasource(gh<_i141.SQLiteService>()));
+      () => _i453.TasksLocalDatasource(gh<_i141.SQLiteService>()),
+    );
     gh.lazySingleton<_i938.ApiHelper>(() => _i718.MockApiHelper());
     gh.lazySingleton<_i123.SyncStatusService>(
-        () => _i123.SyncStatusService(gh<_i12.WebhookHelper>()));
+      () => _i123.SyncStatusService(gh<_i12.WebhookHelper>()),
+    );
     gh.lazySingleton<_i666.SecureStorageService>(
-        () => _i666.SecureStorageService(gh<_i558.FlutterSecureStorage>()));
+      () => _i666.SecureStorageService(gh<_i558.FlutterSecureStorage>()),
+    );
     gh.lazySingleton<_i547.TasksRemoteDatasource>(
-        () => _i547.TasksRemoteDatasource(
-              gh<_i938.ApiHelper>(),
-              gh<_i123.SyncStatusService>(),
-            ));
+      () => _i547.TasksRemoteDatasource(
+        gh<_i938.ApiHelper>(),
+        gh<_i123.SyncStatusService>(),
+      ),
+    );
     gh.lazySingleton<_i787.AuthRepository>(
-        () => _i153.AuthRepositoryImpl(gh<_i745.AuthService>()));
+      () => _i153.AuthRepositoryImpl(gh<_i745.AuthService>()),
+    );
     gh.factory<_i331.AuthBloc>(
-        () => _i331.AuthBloc(gh<_i787.AuthRepository>()));
+      () => _i331.AuthBloc(gh<_i787.AuthRepository>()),
+    );
     gh.lazySingleton<_i161.AuthRemoteDatasource>(
-        () => _i161.AuthRemoteDatasource(
-              gh<_i938.ApiHelper>(),
-              gh<_i12.WebhookHelper>(),
-            ));
-    gh.lazySingleton<_i615.TasksRepository>(() => _i220.TasksRepositoryImpl(
-          gh<_i547.TasksRemoteDatasource>(),
-          gh<_i453.TasksLocalDatasource>(),
-          gh<_i895.Connectivity>(),
-        ));
+      () => _i161.AuthRemoteDatasource(
+        gh<_i938.ApiHelper>(),
+        gh<_i12.WebhookHelper>(),
+      ),
+    );
+    gh.lazySingleton<_i615.TasksRepository>(
+      () => _i220.TasksRepositoryImpl(
+        gh<_i547.TasksRemoteDatasource>(),
+        gh<_i453.TasksLocalDatasource>(),
+        gh<_i895.Connectivity>(),
+      ),
+    );
     gh.factory<_i688.TasksBloc>(
-        () => _i688.TasksBloc(gh<_i615.TasksRepository>()));
+      () => _i688.TasksBloc(gh<_i615.TasksRepository>()),
+    );
     return this;
   }
 }
