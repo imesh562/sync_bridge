@@ -63,7 +63,7 @@ final class _WsConnection {
     _channel = WebSocketChannel.connect(Uri.parse(_url));
 
     try {
-      await _channel!.ready;
+      await _channel!.ready; // wait until the handshake completes
     } catch (_) {
       _scheduleReconnect();
       return;
@@ -93,6 +93,7 @@ final class _WsConnection {
     _attempt++;
     final delay = Duration(
       seconds: min(_maxBackoffSeconds, pow(2, _attempt - 1).toInt()),
+      // Each failed attempt waits longer before retrying, doubling each time, capped at 64 seconds:
     );
     _reconnectTimer = Timer(delay, _connect);
   }

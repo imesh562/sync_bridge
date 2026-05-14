@@ -40,7 +40,8 @@ class SyncStatusService {
 
   void _startReceiver() {
     _wsSub?.cancel();
-    _wsSub = _ws.stream()
+    _wsSub = _ws
+        .stream()
         .where((d) => d['type'] == 'sync_log')
         .listen(_handleRaw);
   }
